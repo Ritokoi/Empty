@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
+<head>
+    <link rel="stylesheet" type="text/css" href="../dir1/pin.css">
+    <link rel="shortcut icon" href="lainico.ico" type="image/x-icon">
+    <link rel="icon" href="lainico.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="description" content="This is an empty site">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+</head>
+<body>
+<div class="container">
+<div class="pin" id="MainPinLogin">
+<input readonly class="pin-login">
+<div class="numpad"></div>
+</div>
+</div>
+<script>
+    class pinLogin{
+        constructor({Container, loginEndpoint, Redirect, Max = Infinity}){
+            this.Container = {
+            main: Container,
+            numPad: Container.querySelector(".numpad"),
+            textDisplay: Container.querySelector(".pin-login")
+        };
+        var stopRequest;
+        this.loginEndpoint = loginEndpoint;
+        this.Redirect = Redirect;
+        this.Max = Max;
+        this.value = "";
+
+        this.pad();
+        }
+        pad(){
+            const padLayout = [
+                "1","2","3",
+                "4","5","6",
+                "7","8","9",
+                "back","0","enter"
+            ];
+
+            padLayout.forEach(key => {
+                const insertBreak = key.search(/[369]/) !== -1;
+                const keyContainer = document.createElement("div");
+
+                keyContainer.classList.add("pin-login-key");
+                keyContainer.textContent = key;
+                keyContainer.addEventListener("click", () => {this._handleKeyPress(key)});
+                this.Container.numPad.appendChild(keyContainer);
+
+                if(insertBreak){
+                    this.Container.numPad.appendChild(document.createElement("br"));
+                }
+            });
+        }
+            
+        _handleKeyPress(key){
+            switch(key){
+                case "back":
+                    this.value = this.value.substring(0, this.value.length - 1);
+                    break;
+                case "enter":
+                    this._attempLogin();
+                    break;
+                default:
+                    if(this.value.length < this.Max && !isNaN(key)){
+                        this.value += key;
+                        this.Container.textDisplay.classList.remove("pin-loginerror");
+                    }
+                    break;
+                }
+            this._updateValue();
+            }
+            
+        _attempLogin(){
+            if(this.value == 1998){
+                window.location.href = this.Redirect;
+            }
+            else{
+                this.Container.textDisplay.classList.toggle("pin-loginerror");
+            }
+        } 
+        _updateValue(){
+            this.Container.textDisplay.value = this.value;
+        }
+    }
+</script>
+<script>
+    new pinLogin({
+    Container: document.getElementById("MainPinLogin"),
+    Redirect: "redirect.html",
+    Max: 4
+})
+</script>
+</body>
+</html>

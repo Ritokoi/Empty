@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
+<head>
+  <link rel="shortcut icon" href="lainico.ico" type="image/x-icon">
+  <link rel="icon" href="lainico.ico" type="image/x-icon">
+</head>
+<style>
+  body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  body{
+    overflow: hidden;
+  }  
+
+  #Conspiracy{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    }
+
+  @media screen and (min-width: 1921px){
+    #Conspiracy{
+      width: 101%;
+      height: 101%;
+    }
+  }
+
+  @media screen and (max-width: 1919px){
+    #Conspiracy{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+</style>
+<body>
+<img src="Conspiracy.gif" id="Conspiracy"/>
+<script>
+    setTimeout(function(){
+      window.location.replace("pin.html")
+    }, 2000);
+</script>
+</body>
+</html>

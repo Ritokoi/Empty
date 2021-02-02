@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
+<head>
+  <link rel="shortcut icon" href="lainico.ico" type="image/x-icon">
+  <link rel="icon" href="lainico.ico" type="image/x-icon">
+</head>
+<style>
+  body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  body{
+    background: rgb(3, 3, 3);
+    overflow: hidden;
+  }
+
+  #Bear {
+    position: absolute;
+    bottom: -85px;
+    left: 50%;
+    width: 600px;
+    height: 402px;
+    margin-left: -300px;    
+  }     
+
+  #Noise{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+  }
+
+  @media screen and (min-width: 1921px){
+    #Noise{
+      width: 101%;
+      height: 101%;
+    }
+  }
+
+  @media screen and (max-width: 1919px){
+    #Noise{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+</style>
+<body>
+  <img src="lainbear1.gif" width="600" height="auto" id="Bear"/>
+  <script>
+    window.onload = function() {
+    var context = new AudioContext();
+    var lain = document.getElementById("Bear")
+    var bg = document.querySelector("body")
+    var Noise = document.getElementById("Noise");
+    var audio = new Audio();
+    audio.src = "PresentDay.mp3";
+    lain.addEventListener("click", ()=>{
+    context.resume().then(()=> audio.play());
+    lain.style.visibility = "hidden";
+    Noise.style.visibility = "visible";
+    bg.style.background = "rgb(222,221,219)";
+    setTimeout(function(){
+      window.location.replace("page2.html")
+    }, 16000);
+  })
+}
+//FUCK YOU CHROME GESTURE .l.-_-.l.
+  </script>
+<!--<audio autoplay loop>
+<source src="PresentDay.mp3" type="audio/mpeg">
+</audio> -->
+<div><img src="PresentDayPresentTime.gif" id="Noise"/></div>
+</body>
+</html>

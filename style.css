@@ -1,0 +1,41 @@
+body{
+    background:black;
+}
+
+a:link{background:none;border:none; color: aliceblue;}
+
+a:link{text-decoration: none;}
+
+a{
+    color: aliceblue;
+}
+
+b:hover{
+    color: white;
+}
+
+canvas{
+    border:1px solid white;
+    display: flex;
+    position: absolute;
+    left: 900px;
+    top: 50px;
+}
+
+@media screen and (max-width: 1724px){
+    canvas{
+    left: 10px;
+    top: 10px;
+    position: relative;
+    }
+}
+
+@media screen and (max-width: 840px){
+    canvas{
+    left: 10px;
+    top: 10px;
+    position: relative;
+    width: 95%;
+    height: 95%;
+    }
+}

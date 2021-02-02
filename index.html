@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
+<head>
+  <link rel="stylesheet" type="text/css" href="../Empty/style.css">
+  <link rel="shortcut icon" href="./dir1/lainico.ico" type="image/x-icon">
+  <link rel="icon" href="./dir1/lainico.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="description" content="This is an empty site">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+</head>
+<body>
+  <div class="container">
+  <h1 style="color: aliceblue;">This site is empty</h1>
+  <a href="#"><img src="NHK.png" style="width: 15%; height: auto;" id="NHK"><img src="NHK1.png" style="width: 15%; height: auto; display: none;" id="NHK1"></p>
+  <a>Nothing to see here</p>
+  <a>It's empty</p>
+  <a>Don't waste your time</p>
+  <a>Go watch TV</p>
+  <a>Check notifications from your social networks</p>
+  <a>Go outside and have fun with your friends at the night club</p>
+  <a><b>Cyberia</b></p>
+  <a>Get drunk and smoke to forget the suffering of life</p>
+  <a>Oh... you can't go outside right now</p>
+  <a>then turn on your console and play videogames</p>
+  <a>What game?, dont ask me, there is a lot of fun games like fortnite</p>
+  <a>It has cool dances and skins</p>
+  <a>¿Game experience? idk</p>
+  <a>If you don't like it then go and look some tiktoks</p>
+  <a>Don't you like none of these things?</p> 
+  <a>Books are boring...</p>
+  <a>What the heck is that music? where are you from?</p>
+  <a>Japanese animation? so your a weeb, have you had any relationship in your life?</p>  
+  <a>Meditation?... Ok you should go to the psychiatrist</p>
+  <a>Nature?, there is no wifi... barely 4G/3G even 2G or simply nothing</p>
+  <a>Your a weirdo...</p>
+  <a>Ok, im tired cya, what a boring place, it's empty</p>
+  <a>I would recomend you to leave this place too..<a href="./dir1/9.html">.</a></p>
+  <b style="background-color: black;">9</b>
+  <audio autoplay="on" loop="on" id="Pururin">
+    <source src="PururinMuffle.mp3" type="audio/mpeg">
+  </audio>
+<script>
+  var context = new AudioContext();
+  var Pururin = document.getElementById("Pururin");
+  var bg = document.querySelector("body");
+  var NHK = document.getElementById("NHK");
+  var NHK1 = document.getElementById("NHK1");
+
+  document.addEventListener("click", ()=>{
+  context.resume().then(()=> Pururin.play());
+})
+  document.addEventListener("keypress", ()=>{
+  context.resume().then(()=> Pururin.play());
+})
+  NHK.addEventListener("click", ()=>{
+  NHK.style.display= "none";
+  NHK1.style.display = "flex";
+})
+</script>
+
+    <!--If you read the code to find the puzzle your a chiken e.e-->
+
+<canvas id="gc" width="800" height="800"></canvas>
+<script>window.onload=function() {
+  canvas=document.getElementById("gc");
+  canvasContext = canvas.getContext("2d");
+  document.addEventListener("keydown",keyPush);
+  setInterval(game,1000/60);
+  px=py=365;
+  xv=yv=0;
+  var player = new Image();
+  player.src = "./dir1/You.png";
+  function game(){
+    px+=xv;
+    py+=yv;
+    if(px<-6) {
+      px=2;
+    }
+    if(px>735) {
+      px=727;
+    }
+    if(py<-6) {
+      py=2;
+    }
+    if(py>770){
+      py=762; 
+    } 
+    colorRect(0,0,canvas.width,canvas.height,"black");
+    drawImg(player,px,py,75,35);
+  }
+  function colorRect(x,y,w,h,c){
+    canvasContext.fillStyle = c;
+    canvasContext.fillRect(x,y,w,h);
+  }
+  function drawImg(src,x,y,w,h){
+    canvasContext.drawImage(src,x,y,w,h);
+  }
+  function keyPush(evt){
+    switch(evt.keyCode){
+      case 65:
+        xv=-4;yv=0;
+        break; 
+      case 87:
+        xv=0;yv=-4;
+        break;
+      case 83: 
+        xv=0;yv=4;
+        break;
+      case 68: 
+        xv=4;yv=0;
+        break;
+    }
+  } 
+}
+</script>
+</div>
+</body>
+</html>

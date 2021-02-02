@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;" onkeydown="return false;" onmousedown="return false;">
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+        }
+        body{
+            background:black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        canvas{
+            border:1px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #Lain{
+            width: 100px;
+            position: fixed;
+            bottom: -1px;
+            left: 75%;
+            margin-left: -280px;
+        }
+        @media screen and (max-width: 640px){
+        #gc{
+        width: 90%;
+        
+        position: relative;
+        }
+    }
+        @media screen and (max-height:626px){
+        #gc{
+        
+        height: 90%;
+        position: relative;
+        }
+    }
+        @media screen and (min-width: 1921px){
+        #c{
+            width: 101%;
+            height: 101%;
+        }
+    }
+        @media screen and (max-width: 1919px){
+        #c{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    </style>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+        <link rel="shortcut icon" href="lainico.ico" type="image/x-icon">
+        <link rel="icon" href="lainico.ico" type="image/x-icon">
+    </head>
+    <body>
+        <canvas id="c" style="position:absolute;"></canvas>
+        <canvas id="gc" width="600" height="600"style="position: absolute;"></canvas>
+        <audio autoplay loop id="wired">
+            <source src="wired.mp3" type="audio/mpeg"/>
+        </audio>
+        <script>
+        var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+
+        c.height = 1080;
+        c.width = 1920;
+
+        var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        var font_size = 10;
+        var columns = c.width/font_size; 
+        var drops = [];
+        for(var x = 0; x < columns; x++)
+            drops[x] = 1; 
+
+        function draw()
+        {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.fillStyle = "#f4427d";
+            ctx.font = font_size + "px arial";
+            
+            for(var i = 0; i < drops.length; i++)
+            {
+                var text = matrix[Math.floor(Math.random()*matrix.length)];
+                ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+                if(drops[i]*font_size > c.height && Math.random() > 0.975)
+                    drops[i] = 0;
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+        </script>
+        <script>window.onload=function() {
+
+            canvas=document.getElementById("gc");
+            canvasContext = canvas.getContext("2d");
+            document.addEventListener("keydown",keyPush);
+            setInterval(game,1000/60);
+            px=py=280;
+            xv=yv=0;
+            var ex=-180;
+            var ey=-180;
+            var ex1=600;
+            var ey1=600;
+            var ex2=1000;
+            var ey2=1000;
+            var ex3=1;
+            var ey3=500;
+            var ex4=300;
+            var ey4=-500;
+            var ex5=Math.random()*530;
+            var ey5=Math.random()*530;
+            var ex6=Math.random()*530;
+            var ey6=Math.random()*530;
+            var ex7=Math.random()*530;
+            var ey7=Math.random()*530;
+            var ex8=Math.random()*530;
+            var ey8=Math.random()*530;
+            var enemyspeedX=5;
+            var enemyspeedY=5;
+            var enemyspeedX1=2;
+            var enemyspeedY1=5;
+            var enemyspeedX2=2;
+            var enemyspeedY2=2;
+            var enemyspeedX2=-4;
+            var enemyspeedY2=-1;  
+            var enemyspeedX3= 4;
+            var enemyspeedY3=-1;     
+
+            var player = new Image();
+            var enemy = new Image();
+            var enemy1 = new Image();
+            var enemy2 = new Image();
+            var enemy3 = new Image();
+            var enemy4 = new Image();
+            var enemy5 = new Image();
+            var enemy6 = new Image();
+            var enemy7 = new Image();
+            var enemy8 = new Image();
+            player.src = "You.png";
+            enemy.src = "Enemy.png";
+            enemy1.src = "Enemy1.png";
+            enemy2.src = "Enemy2.png";
+            enemy3.src = "Enemy3.png";
+            enemy4.src = "Enemy4.png";
+            enemy5.src = "Enemy5.png";
+            enemy6.src = "Enemy6.png";
+            enemy7.src = "Enemy7.png";
+            enemy8.src = "Enemy8.png";
+
+
+            function game(){
+                px+=xv;
+                py+=yv;
+
+                switch(true){
+                    case px<-2:
+                        px=2;
+                        break;
+                    case px>564:
+                        px=560;
+                        break;
+                    case px==560 && py==4: 
+                        window.location.href="redirect1.html";
+                    case py<0: 
+                        py=4;
+                        break;
+                    case py>580: 
+                        py=576;
+                        break;
+                }
+
+                switch(true){
+                    case ex5<-2:
+                        enemyspeedX=-enemyspeedX;
+                        break;
+                    case ex5>540: 
+                        enemyspeedX=-enemyspeedX;
+                        break;
+                    case ey5<0: 
+                        enemyspeedY=-enemyspeedY;
+                        break;
+                    case ey5>580: 
+                        enemyspeedY=-enemyspeedY;
+                        break;
+                }
+
+                switch(true){
+                    case ex6<-2: 
+                        enemyspeedX1=-enemyspeedX1;
+                        break;
+                    case ex6>540: 
+                        enemyspeedX1=-enemyspeedX1;
+                        break;
+                    case ey6<0: 
+                        enemyspeedY1=-enemyspeedY1;
+                        break;
+                    case ey6>580:
+                        enemyspeedY1=-enemyspeedY1;
+                        break;
+                }
+
+                switch(true){
+                    case ex7<-2: 
+                        enemyspeedX2=-enemyspeedX2;
+                        break;
+                    case ex7>540: 
+                        enemyspeedX2=-enemyspeedX2;
+                        break;
+                    case ey7<0: 
+                        enemyspeedY2=-enemyspeedY2;
+                        break;
+                    case ey7>580: 
+                        enemyspeedY2=-enemyspeedY2;
+                        break;
+                }
+
+                switch(true){
+                    case ex8<-2: 
+                        enemyspeedX3=-enemyspeedX3;
+                        break;
+                    case ex8>540: 
+                        enemyspeedX3=-enemyspeedX3;
+                        break;
+                    case ey8<0: 
+                        enemyspeedY3=-enemyspeedY3;
+                        break;
+                    case ey8>580: 
+                        enemyspeedY3=-enemyspeedY3;
+                        break;
+                }
+
+                colorRect(0,0,canvas.width,canvas.height,"black");
+                drawImg(player,px,py,40,20);
+                drawImg(enemy,ex4,ey4,65,35);
+                drawImg(enemy1,ex5,ey5,55,30);
+                drawImg(enemy2,ex3,ey3,40,40);
+                drawImg(enemy3,ex2,ey2,55,40);
+                drawImg(enemy4,ex1,ey1,80,80);
+                drawImg(enemy5,ex,ey,80,80);
+                drawImg(enemy6,ex8,ey8,60,15);
+                drawImg(enemy7,ex6,ey6,55,20);
+                drawImg(enemy8,ex7,ey7,60,20);
+                enemymove();
+            } 
+            function colorRect(x,y,w,h,c){
+                canvasContext.fillStyle = c;
+                canvasContext.fillRect(x,y,w,h);
+            }
+
+            function drawImg(src,x,y,w,h){
+                canvasContext.drawImage(src,x,y,w,h);
+            }    
+            
+            function enemymove(){
+                var difX = px - ex;
+                var difY = py - ey;
+                var difX1 = px - ex1;
+                var difY1 = py - ey1;
+                var difX2 = px - ex2;
+                var difY2 = py - ey2;
+                var difX3 = px - ex3;
+                var difY3 = py - ey3;
+                var difX4 = px - ex4;
+                var difY4 = py - ey4;
+
+                ex5 += enemyspeedX;
+                ey5 += enemyspeedY;
+                ex6 += enemyspeedX1;
+                ey6 += enemyspeedY1;
+                ex7 += enemyspeedX2;
+                ey7 += enemyspeedY2;
+                ex8 += enemyspeedX3;
+                ey8 += enemyspeedY3;
+
+                if (difX>0)
+                    ex += 0.5;
+                else 
+                    ex -= 0.5;
+                if (difY>0)
+                    ey += 0.5;
+                else 
+                    ey -= 0.5;
+
+
+                if (difX1>0)
+                    ex1 += 1;
+                else 
+                    ex1 -= 1;
+                if (difY1>0)
+                    ey1 += 1;
+                else 
+                    ey1 -= 1;
+
+
+                if(difX2>0)
+                    ex2 += 1.4;    
+                else
+                    ex2 -= 1.4;
+                if(difY2>0)
+                    ey2 += 1.4;
+                else
+                    ey2 -= 1.4;
+
+
+                if(difX3>0)
+                    ex3 += 2;    
+                else
+                    ex3 -= 2;
+                if(difY3>0)
+                    ey3 += 2;
+                else
+                    ey3 -= 2;
+
+
+                if(difX4>0)
+                    ex4 += 2.5;    
+                else
+                    ex4 -= 2.5;
+                if(difY4>0)
+                    ey4 += 2.5;
+                else
+                    ey4 -= 2.5;
+            }
+
+            function keyPush(evt) {
+            switch(evt.keyCode) {
+            case 65:
+                xv=-4;yv=0;
+                break; 
+            case 87:
+                xv=0;yv=-4;
+                break;
+            case 83: 
+                xv=0;yv=4;
+                break;
+            case 68: 
+                xv=4;yv=0;
+                break;
+            }
+        }
+    }
+        </script>
+        <script>
+            var autoplay = new AudioContext();
+            var Wired = document.getElementById("wired");
+
+            document.addEventListener("click", ()=>{
+            autoplay.resume().then(()=> Wired.play());
+            })
+
+            document.addEventListener("keypress", ()=>{
+            autoplay.resume().then(()=> Wired.play());
+            })
+        </script>
+        <a id="Lain"><img src="37qjly9b90dy.gif" width="700"; height="auto"/></a>
+    </body>
+</html>
